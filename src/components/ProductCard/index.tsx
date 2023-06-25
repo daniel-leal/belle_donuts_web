@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { Product } from '../../interfaces/Product';
+import { Product } from '../../interfaces/Product'
 
 type ProductCardProps = {
-  product: Product;
-  screenSize: string;
-};
+  product: Product
+  screenSize: string
+}
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, screenSize }) => {
   return (
@@ -56,7 +56,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, screenSize }) => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductCard
