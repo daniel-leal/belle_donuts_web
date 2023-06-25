@@ -1,43 +1,43 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 
-import Footer from '../../components/Footer';
-import ProductCard from '../../components/ProductCard';
-import useScreenSize from '../../hooks/useScreenSize';
-import { Product } from '../../interfaces/Product';
-import { fetchProducts } from '../../services/ProductService';
+import Footer from '../../components/Footer'
+import ProductCard from '../../components/ProductCard'
+import useScreenSize from '../../hooks/useScreenSize'
+import { Product } from '../../interfaces/Product'
+import { fetchProducts } from '../../services/ProductService'
 
 const Home: React.FC = () => {
-  const screenSize = useScreenSize();
-  const productRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-  const [categories, setCategories] = useState<string[]>([]);
-  const [products, setProducts] = useState<Product[]>([]);
+  const screenSize = useScreenSize()
+  const productRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+  const [categories, setCategories] = useState<string[]>([])
+  const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsData = await fetchProducts();
+        const productsData = await fetchProducts()
         const uniqueCategories = Array.from(
-          new Set(productsData.map((product) => product.category))
-        );
-        setCategories(uniqueCategories);
-        setProducts(productsData);
+          new Set(productsData.map(product => product.category))
+        )
+        setCategories(uniqueCategories)
+        setProducts(productsData)
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching products:', error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   const handleTabChange = (category: string) => {
-    const selectedProductRef = productRefs.current[category];
+    const selectedProductRef = productRefs.current[category]
     if (selectedProductRef) {
       window.scrollTo({
         top: selectedProductRef.offsetTop - 100,
-        behavior: 'smooth',
-      });
+        behavior: 'smooth'
+      })
     }
-  };
+  }
 
   return (
     <>
@@ -64,7 +64,7 @@ const Home: React.FC = () => {
               tabIndex={0}
               className="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-secondary rounded-box w-52"
             >
-              {categories.map((category) => (
+              {categories.map(category => (
                 <li key={category} onClick={() => handleTabChange(category)}>
                   <button className="text-white">{category}</button>
                 </li>
@@ -82,7 +82,7 @@ const Home: React.FC = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal menu-lg px-1">
-            {categories.map((category) => (
+            {categories.map(category => (
               <li
                 key={category}
                 onClick={() => handleTabChange(category)}
@@ -117,10 +117,10 @@ const Home: React.FC = () => {
       </div>
       <div className="bg-gray-200 pt-16 min-h-screen">
         <div className="container mx-auto py-8">
-          {categories.map((category) => (
+          {categories.map(category => (
             <div
               key={category}
-              ref={(ref) => (productRefs.current[category] = ref)}
+              ref={ref => (productRefs.current[category] = ref)}
               className={screenSize === 'sm' ? 'bg-white p-4 mb-4' : ''}
             >
               <h2 className={`text-2xl text-neutral mb-4 mt-8`}>{category}</h2>
@@ -128,7 +128,7 @@ const Home: React.FC = () => {
               {screenSize === 'sm' ? (
                 <div>
                   {products
-                    .filter((product) => product.category === category)
+                    .filter(product => product.category === category)
                     .map((product, index) => (
                       <div key={product.id}>
                         {index > 0 && <hr className="border-gray-300 my-4" />}
@@ -142,8 +142,8 @@ const Home: React.FC = () => {
               ) : (
                 <div className="grid grid-cols-2 gap-4">
                   {products
-                    .filter((product) => product.category === category)
-                    .map((product) => (
+                    .filter(product => product.category === category)
+                    .map(product => (
                       <ProductCard
                         key={product.id}
                         product={product}
@@ -158,7 +158,7 @@ const Home: React.FC = () => {
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
