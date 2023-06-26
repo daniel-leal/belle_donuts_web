@@ -1,46 +1,93 @@
-# Getting Started with Create React App
+# 🍩 Belle Donuts - Digital Menu
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![La Belle Donuts](https://static.ifood-static.com.br/image/upload/t_thumbnail/logosgde/f58541e0-1c5a-404a-843c-b7e817fdd08d/202305221353_PctM_i.jpg)
 
-## Available Scripts
+[![License](https://img.shields.io/github/license/daniel-leal/belle_donuts_web)](https://github.com/daniel-leal/belle_donuts_web/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/daniel-leal/belle_donuts_web)](https://github.com/daniel-leal/belle_donuts_web/issues)
 
-In the project directory, you can run:
+<!-- [![Build Status](https://github.com/daniel-leal/belle_donuts_web/actions/workflows/ci.yml/badge.svg)](https://github.com/daniel-leal/belle_donuts_web/actions/workflows/ci.yml) -->
 
-### `npm start`
+This repository contains the source code of a React project for creating a digital menu for La Belle Donuts, a donut delivery bakery. The main purpose of the project is to allow customers to view the products offered by the bakery, add items to the cart, and place delivery orders.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ✨ Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+La Belle Donuts' digital menu offers the following features:
 
-### `npm test`
+- Viewing products with detailed information, including images, prices, and descriptions.
+- Adding products to the shopping cart.
+- Removing products from the cart.
+- Automatic calculation of the total purchase amount based on the selected items.
+- Order finalization and redirection to WhatsApp for sending a message with the order information, including the selected items and delivery address.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📋 Prerequisites
 
-### `npm run build`
+To run the project locally, you need to have the following installed in your development environment:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js
+- yarn (Node.js package manager)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⚙️ How to run the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Follow the steps below to set up the development environment and run Belle Donuts:
 
-### `npm run eject`
+1. Clone this repository to your local environment:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```shell
+   git clone https://github.com/daniel-leal/belle_donuts_web.git
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Navigate to the project directory:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```shell
+   cd belle_donuts_web
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Install project dependencies:
 
-## Learn More
+   ```shell
+   yarn
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Start the development server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```shell
+   yarn start
+   ```
+
+This will start the application in development mode. You can access it in your browser at http://localhost:3000.
+
+## 🤝 Contributing
+
+If you would like to contribute to the development of Belle Donuts, please follow the steps below:
+
+1. Fork this repository and clone it to your local environment.
+
+2. Create a new branch for your contribution:
+
+   ```shell
+   git checkout -b my-contribution
+   ```
+
+3. Make the desired changes to the code.
+
+4. Run tests to ensure that the system is functioning correctly:
+
+   ```shell
+   mix test
+   ```
+
+5. Commit your changes:
+
+   ```shell
+   git commit -m "My Contribution"
+   ```
+
+6. Push the changes to your forked repository:
+
+   ```shell
+   git push origin my-contribution
+   ```
+
+7. Open a pull request in this repository, describing your contribution and any relevant details.
+
+Thank you for considering contributing to Belle Donuts! Your help is greatly appreciated. 💜
