@@ -70,24 +70,19 @@ If you would like to contribute to the development of Belle Donuts, please follo
 
 3. Make the desired changes to the code.
 
-4. Run tests to ensure that the system is functioning correctly:
 
-   ```shell
-   mix test
-   ```
-
-5. Commit your changes:
+4. Commit your changes:
 
    ```shell
    git commit -m "My Contribution"
    ```
 
-6. Push the changes to your forked repository:
+5. Push the changes to your forked repository:
 
    ```shell
    git push origin my-contribution
    ```
 
-7. Open a pull request in this repository, describing your contribution and any relevant details.
+6. Open a pull request in this repository, describing your contribution and any relevant details.
 
 Thank you for considering contributing to Belle Donuts! Your help is greatly appreciated. 💜
