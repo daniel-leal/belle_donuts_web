@@ -1,5 +1,5 @@
+import { ProductsResponse } from '@interfaces/Product'
 import axios from '../config/axiosConfig'
-import { ProductsResponse } from '../interfaces/Product'
 
 export const fetchProducts = async () => {
   try {

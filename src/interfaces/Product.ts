@@ -1,4 +1,4 @@
-export type Product = {
+export interface Product {
   description: string
   id: string
   image_url: string
@@ -8,6 +8,6 @@ export type Product = {
   category: string
 }
 
-export type ProductsResponse = {
+export interface ProductsResponse {
   data: Product[]
 }

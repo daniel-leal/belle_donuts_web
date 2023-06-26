@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import Footer from '../../components/Footer'
-import ProductCard from '../../components/ProductCard'
-import useScreenSize from '../../hooks/useScreenSize'
-import { Product } from '../../interfaces/Product'
-import { fetchProducts } from '../../services/ProductService'
+import Footer from '@components/Footer'
+import ProductCard from '@components/ProductCard'
+import useScreenSize from '@hooks/useScreenSize'
+import { Product } from '@interfaces/Product'
+import { fetchProducts } from '@services/ProductService'
 
 const Home: React.FC = () => {
   const screenSize = useScreenSize()
@@ -65,7 +65,12 @@ const Home: React.FC = () => {
               className="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-secondary rounded-box w-52"
             >
               {categories.map(category => (
-                <li key={category} onClick={() => handleTabChange(category)}>
+                <li
+                  key={category}
+                  onClick={() => {
+                    handleTabChange(category)
+                  }}
+                >
                   <button className="text-white">{category}</button>
                 </li>
               ))}
@@ -85,7 +90,9 @@ const Home: React.FC = () => {
             {categories.map(category => (
               <li
                 key={category}
-                onClick={() => handleTabChange(category)}
+                onClick={() => {
+                  handleTabChange(category)
+                }}
                 className="hover:text-white text-white btn btn-ghost"
               >
                 {category}
