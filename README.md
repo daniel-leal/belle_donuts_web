@@ -2,16 +2,16 @@
 
 ![La Belle Donuts](https://static.ifood-static.com.br/image/upload/t_thumbnail/logosgde/f58541e0-1c5a-404a-843c-b7e817fdd08d/202305221353_PctM_i.jpg)
 
-[![License](https://img.shields.io/github/license/daniel-leal/belle_donuts_web)](https://github.com/daniel-leal/belle_donuts_web/blob/main/LICENSE)
+[![Build Status](https://github.com/daniel-leal/belle_donuts_web/actions/workflows/ci.yml/badge.svg)](https://github.com/daniel-leal/belle_donuts_web/actions/workflows/ci.yml)
 [![GitHub issues](https://img.shields.io/github/issues/daniel-leal/belle_donuts_web)](https://github.com/daniel-leal/belle_donuts_web/issues)
 
-<!-- [![Build Status](https://github.com/daniel-leal/belle_donuts_web/actions/workflows/ci.yml/badge.svg)](https://github.com/daniel-leal/belle_donuts_web/actions/workflows/ci.yml) -->
+
 
 This repository contains the source code of a React project for creating a digital menu for La Belle Donuts, a donut delivery bakery. The main purpose of the project is to allow customers to view the products offered by the bakery, add items to the cart, and place delivery orders.
 
 ## ✨ Features
 
-La Belle Donuts' digital menu offers the following features:
+<!-- La Belle Donuts' digital menu offers the following features: -->
 
 - Viewing products with detailed information, including images, prices, and descriptions.
 - Adding products to the shopping cart.
