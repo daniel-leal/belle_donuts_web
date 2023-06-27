@@ -33,7 +33,8 @@
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/consistent-type-imports": "off",
-    "@typescript-eslint/consistent-type-definitions": "off"
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "import/no-named-as-default-member": "off"
   },
   "overrides": [
     {
@@ -49,6 +50,9 @@
     }
   ],
   "settings": {
+    "react": {
+      "version": "18.2.0"
+    },
     "import/resolver": {
       "typescript": {
         "project": "./tsconfig.json"
