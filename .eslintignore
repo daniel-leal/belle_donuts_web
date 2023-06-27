@@ -1,7 +1,8 @@
-# Ignore artifacts:
 build
 coverage
 .eslintrc.json
 README.md
 tsconfig.json
 tsconfig.paths.json
+config-overrides.js
+tailwind.config.js
