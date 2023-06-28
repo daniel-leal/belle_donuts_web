@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ categories, productRefs }) => {
   }
 
   return (
-    <div className="navbar fixed bg-secondary">
+    <div className="navbar sticky top-0 z-50 bg-secondary">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -52,13 +52,11 @@ const Navbar: React.FC<NavbarProps> = ({ categories, productRefs }) => {
             ))}
           </ul>
         </div>
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-          <div className="w-10 rounded-full ring ring-secondary-focus ring-offset-base-100 ring-offset-2">
-            <img
-              src="https://static.ifood-static.com.br/image/upload/t_thumbnail/logosgde/f58541e0-1c5a-404a-843c-b7e817fdd08d/202305221353_PctM_i.jpg"
-              alt="logo"
-            />
-          </div>
+        <label
+          tabIndex={0}
+          className="text-white font-extrabold from-accent-content font-sans"
+        >
+          LA BELLE DONUTS
         </label>
       </div>
       <div className="navbar-center hidden lg:flex">
