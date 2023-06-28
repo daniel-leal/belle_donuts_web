@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import Footer from '@components/Footer'
+import HeroAvailability from '@components/HeroAvailability'
 import Navbar from '@components/Navbar'
 import ProductCard from '@components/ProductCard'
 import useScreenSize from '@hooks/useScreenSize'
 import { Product } from '@interfaces/Product'
-import { fetchProducts } from '@services/ProductService'
+import { fetchProducts } from '@services/DeliveryServices'
 import { formatPrice } from '@utils/utils'
 
 type ProductListProps = {
@@ -67,7 +68,8 @@ const Home: React.FC = () => {
   return (
     <>
       <Navbar categories={categories} productRefs={productRefs} />
-      <div className="bg-gray-200 pt-16 min-h-screen">
+      <div className="bg-gray-200 min-h-screen">
+        <HeroAvailability />
         <div className="container mx-auto py-8">
           {categories.map(category => (
             <div
