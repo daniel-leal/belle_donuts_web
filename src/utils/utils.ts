@@ -9,8 +9,8 @@ import {
 } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
-export function formatPrice(price: string) {
-  return `R$ ${price.replace('.', ',')}`
+export function formatPrice(price: number) {
+  return `R$ ${String(Number(price).toFixed(2)).replace('.', ',')}`
 }
 
 export function isOperatingTime(schedule: OperatingHours[]): boolean {

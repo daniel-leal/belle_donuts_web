@@ -1,5 +1,3 @@
-import React, { useEffect, useRef, useState } from 'react'
-
 import Footer from '@components/Footer'
 import HeroAvailability from '@components/HeroAvailability'
 import Navbar from '@components/Navbar'
@@ -8,6 +6,7 @@ import useScreenSize from '@hooks/useScreenSize'
 import { Product } from '@interfaces/Product'
 import { fetchProducts } from '@services/DeliveryServices'
 import { formatPrice } from '@utils/utils'
+import React, { useEffect, useRef, useState } from 'react'
 
 type ProductListProps = {
   category: string
@@ -26,7 +25,7 @@ const Home: React.FC = () => {
 
         const formattedProducts = productsData.map(product => ({
           ...product,
-          price: formatPrice(product.price)
+          formattedPrice: formatPrice(product.price)
         }))
 
         const uniqueCategories = Array.from(
@@ -42,7 +41,7 @@ const Home: React.FC = () => {
     fetchData()
   }, [])
 
-  const getProductCards = (category: string, screenSize: string) => {
+  const getProductCards = (category: string) => {
     return products
       .filter(product => product.category === category)
       .map((product, index) => (
@@ -55,14 +54,12 @@ const Home: React.FC = () => {
       ))
   }
 
-  const ProductsMobileList = ({ category }: ProductListProps) => (
-    <div>{getProductCards(category, 'sm')}</div>
+  const ProductsMobileList: React.FC<ProductListProps> = ({ category }) => (
+    <div>{getProductCards(category)}</div>
   )
 
-  const ProductsList = ({ category }: ProductListProps) => (
-    <div className="grid grid-cols-2 gap-4">
-      {getProductCards(category, 'lg')}
-    </div>
+  const ProductsList: React.FC<ProductListProps> = ({ category }) => (
+    <div className="grid grid-cols-2 gap-4">{getProductCards(category)}</div>
   )
 
   return (
