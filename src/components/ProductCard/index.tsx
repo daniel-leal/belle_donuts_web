@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Product } from '@interfaces/Product'
+import { useNavigate } from 'react-router-dom'
 
 type ProductCardProps = {
   product: Product
@@ -8,6 +9,15 @@ type ProductCardProps = {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, screenSize }) => {
+  const navigate = useNavigate()
+
+  const handleProductDetailsNavigate = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.preventDefault()
+    navigate(`/products/${product.id}`, { state: { product } })
+  }
+
   const MobileListView = () => (
     <>
       <div className="flex-1">
@@ -17,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, screenSize }) => {
             {product.description}
           </p>
         )}
-        <p className="text-lg text-green-500">{product.price}</p>
+        <p className="text-lg text-green-500">{product.formattedPrice}</p>
       </div>
       <img
         src={product.image_url}
@@ -36,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, screenSize }) => {
             <p className="text-sm text-gray-500 mb-2">{product.description}</p>
           )}
         </div>
-        <p className="text-lg text-green-500">{product.price}</p>
+        <p className="text-lg text-green-500">{product.formattedPrice}</p>
       </div>
       <div className="w-1/5">
         <img
@@ -54,7 +64,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, screenSize }) => {
         screenSize === 'sm'
           ? 'flex items-center mb-2'
           : 'bg-white rounded-lg shadow-md flex'
-      }`}
+      } cursor-pointer hover:bg-opacity-30 transition-colors duration-500`}
+      onClick={handleProductDetailsNavigate}
     >
       {screenSize === 'sm' ? <MobileListView /> : <CardView />}
     </div>

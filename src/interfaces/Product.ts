@@ -3,9 +3,10 @@ export interface Product {
   id: string
   image_url: string
   name: string
-  price: string
+  price: number
   type: string
   category: string
+  formattedPrice: string
 }
 
 export interface ProductsResponse {
