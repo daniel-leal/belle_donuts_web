@@ -15,8 +15,8 @@ type ProductListProps = {
 const Home: React.FC = () => {
   const screenSize = useScreenSize()
   const productRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
-  const [categories, setCategories] = useState<string[]>([])
   const [products, setProducts] = useState<Product[]>([])
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,10 +28,6 @@ const Home: React.FC = () => {
           formattedPrice: formatPrice(product.price)
         }))
 
-        const uniqueCategories = Array.from(
-          new Set(productsData.map(product => product.category))
-        )
-        setCategories(uniqueCategories)
         setProducts(formattedProducts)
       } catch (error) {
         console.error('Error fetching products:', error)
@@ -41,8 +37,22 @@ const Home: React.FC = () => {
     fetchData()
   }, [])
 
+  const uniqueCategories = Array.from(
+    new Set(products.map(product => product.category))
+  )
+
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
+  const filteredCategories = Array.from(
+    new Set(filteredProducts.map(product => product.category))
+  )
+
   const getProductCards = (category: string) => {
-    return products
+    const productList = searchTerm.length > 0 ? filteredProducts : products
+
+    return productList
       .filter(product => product.category === category)
       .map((product, index) => (
         <React.Fragment key={product.id}>
@@ -64,11 +74,21 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Navbar categories={categories} productRefs={productRefs} />
+      <Navbar categories={uniqueCategories} productRefs={productRefs} />
       <div className="bg-gray-200 min-h-screen">
         <HeroAvailability />
         <div className="container mx-auto py-8">
-          {categories.map(category => (
+          <input
+            type="text"
+            placeholder="Buscar no cardápio..."
+            className="input mb-5 input-bordered input-secondary rounded-md w-full max-w"
+            value={searchTerm}
+            onChange={e => {
+              setSearchTerm(e.target.value)
+            }}
+          />
+
+          {filteredCategories.map(category => (
             <div
               key={category}
               ref={ref => (productRefs.current[category] = ref)}

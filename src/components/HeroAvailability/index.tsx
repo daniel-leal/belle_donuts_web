@@ -7,16 +7,12 @@ import React, { useEffect, useState } from 'react'
 
 const HeroAvailability: React.FC = () => {
   const [operatingHours, setOperatingHours] = useState<OperatingHours[]>([])
-  const [isOpen, setIsOpen] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetchOperatingHours()
-
         setOperatingHours(response)
-        console.log(operatingHours)
-        setIsOpen(isOperatingTime(response))
       } catch (error) {
         console.error('Error fetching hours:', error)
       }
@@ -24,6 +20,8 @@ const HeroAvailability: React.FC = () => {
 
     fetchData()
   }, [])
+
+  const isOpen = isOperatingTime(operatingHours)
 
   const onlineText = `
   Bem-vindos à nossa La Belle Donuts! Estamos abertos e prontos para
