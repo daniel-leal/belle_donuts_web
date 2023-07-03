@@ -1,64 +1,86 @@
 import React from 'react'
 
 type NavbarProps = {
-  categories: string[]
-  productRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>
+  categories?: string[]
+  productRefs?: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>
+  showGoBack?: boolean
+  handleGoBack?: () => void
 }
 
-const Navbar: React.FC<NavbarProps> = ({ categories, productRefs }) => {
+export default function Navbar({
+  categories = [],
+  productRefs,
+  showGoBack = false,
+  handleGoBack
+}: NavbarProps) {
   const handleTabChange = (category: string) => {
-    const selectedProductRef = productRefs.current[category]
-    if (selectedProductRef) {
-      window.scrollTo({
-        top: selectedProductRef.offsetTop - 100,
-        behavior: 'smooth'
-      })
+    if (productRefs?.current) {
+      const selectedProductRef = productRefs.current[category]
+      if (selectedProductRef) {
+        window.scrollTo({
+          top: selectedProductRef.offsetTop - 100,
+          behavior: 'smooth'
+        })
+      }
     }
   }
 
   return (
-    <div className="navbar sticky top-0 z-50 bg-secondary">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-secondary rounded-box w-52"
+    <div className="navbar bg-secondary">
+      <div className="flex-1">
+        {showGoBack && (
+          <a
+            className="btn btn-ghost normal-case text-xl text-white"
+            onClick={handleGoBack}
           >
-            {categories.map(category => (
-              <li
-                key={category}
-                onClick={() => {
-                  handleTabChange(category)
-                }}
-              >
-                <button className="text-white">{category}</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <label
-          tabIndex={0}
-          className="text-white font-extrabold from-accent-content font-sans"
-        >
-          LA BELLE DONUTS
-        </label>
+            ⏎
+          </a>
+        )}
       </div>
+      {!showGoBack && (
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="white"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-secondary rounded-box w-52"
+            >
+              {categories.map(category => (
+                <li
+                  key={category}
+                  onClick={() => {
+                    handleTabChange(category)
+                  }}
+                >
+                  <button className="text-white">{category}</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <label
+            tabIndex={0}
+            className="text-white font-extrabold from-accent-content font-sans"
+          >
+            LA BELLE DONUTS
+          </label>
+        </div>
+      )}
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal menu-lg px-1">
           {categories.map(category => (
@@ -98,5 +120,3 @@ const Navbar: React.FC<NavbarProps> = ({ categories, productRefs }) => {
     </div>
   )
 }
-
-export default Navbar
