@@ -98,7 +98,7 @@ const Home: React.FC = () => {
               <input
                 type="search"
                 placeholder="Buscar no cardápio..."
-                className="input mb-5 input-bordered input-secondary rounded-md min-w-full pl-10"
+                className="input mb-5 input-bordered input-secondary rounded min-w-full pl-10"
                 value={searchTerm}
                 onChange={e => {
                   setSearchTerm(e.target.value)
