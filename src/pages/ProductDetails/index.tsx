@@ -132,47 +132,45 @@ const ProductDetails = () => {
       ) : (
         <>
           <NavBar />
-          <div className="md:container mx-auto py-4 px-20">
-            <div className="flex flex-row justify-between mx-40 p-2 gap-4 shadow-lg bg-white rounded-lg">
-              <img
-                src={product.image_url}
-                alt={product.name}
-                className="object-cover rounded-md"
-              />
-              <div className="flex flex-col justify-between">
-                <h2 className="text-5xl text-secondary-focus font-bold">
-                  {product.name}
-                </h2>
-                <p className="text-gray-500 text-xxl mt-2">
-                  {product.description}
-                </p>
-                <div className="flex justify-between items-baseline bg-gray-100 rounded-md p-2">
-                  <div className="flex items-center">
-                    <button
-                      className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md"
-                      onClick={() => {
-                        handleSubQuantity()
-                      }}
-                    >
-                      -
-                    </button>
-                    <span className="mx-2 font-semibold">{quantity}</span>
-                    <button
-                      className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md"
-                      onClick={() => {
-                        handleAddQuantity()
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div className="text-gray-700">
-                    <span className="font-bold text-green-600">{total}</span>
-                  </div>
-                  <button className="bg-secondary text-white px-4 py-2 rounded-md">
-                    Adicionar
+          <div className="mx-auto container mt-11 shadow-2xl bg-white rounder-lg flex flex-row p-4 gap-4 w-full">
+            <img
+              src={product.image_url}
+              alt={product.name}
+              className="object-contain h-64 rounded-md responsive"
+            />
+            <div className="flex flex-col justify-between w-full">
+              <h2 className="text-5xl text-secondary-focus font-bold">
+                {product.name}
+              </h2>
+              <p className="text-gray-500 text-xxl mt-2">
+                {product.description}
+              </p>
+              <div className="flex justify-between items-baseline bg-gray-100 rounded-md p-2">
+                <div className="flex items-center">
+                  <button
+                    className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md"
+                    onClick={() => {
+                      handleSubQuantity()
+                    }}
+                  >
+                    -
+                  </button>
+                  <span className="mx-2 font-semibold">{quantity}</span>
+                  <button
+                    className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md"
+                    onClick={() => {
+                      handleAddQuantity()
+                    }}
+                  >
+                    +
                   </button>
                 </div>
+                <div className="text-gray-700">
+                  <span className="font-bold text-green-600">{total}</span>
+                </div>
+                <button className="bg-secondary text-white px-4 py-2 rounded-md">
+                  Adicionar
+                </button>
               </div>
             </div>
           </div>
