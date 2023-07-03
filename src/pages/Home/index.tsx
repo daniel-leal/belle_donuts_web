@@ -78,15 +78,34 @@ const Home: React.FC = () => {
       <div className="bg-gray-200 min-h-screen">
         <HeroAvailability />
         <div className="container mx-auto py-8">
-          <input
-            type="text"
-            placeholder="Buscar no cardápio..."
-            className="input mb-5 input-bordered input-secondary rounded-md w-full max-w"
-            value={searchTerm}
-            onChange={e => {
-              setSearchTerm(e.target.value)
-            }}
-          />
+          <div
+            className={`container  ${screenSize === 'sm' ? 'pr-3 pl-3' : ''}`}
+          >
+            <div className="relative">
+              <span className="absolute flex items-center pl-2 pt-3">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  className="w-6 h-6 text-gray-400"
+                >
+                  <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </span>
+              <input
+                type="search"
+                placeholder="Buscar no cardápio..."
+                className="input mb-5 input-bordered input-secondary rounded-md min-w-full pl-10"
+                value={searchTerm}
+                onChange={e => {
+                  setSearchTerm(e.target.value)
+                }}
+              />
+            </div>
+          </div>
 
           {filteredCategories.map(category => (
             <div
