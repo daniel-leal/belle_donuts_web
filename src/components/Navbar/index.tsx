@@ -1,4 +1,6 @@
+import useCart from '@hooks/useCart'
 import React from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 type NavbarProps = {
   categories?: string[]
@@ -10,9 +12,11 @@ type NavbarProps = {
 export default function Navbar({
   categories = [],
   productRefs,
-  showGoBack = false,
-  handleGoBack
+  showGoBack = false
 }: NavbarProps) {
+  const navigate = useNavigate()
+  const { totalProducts } = useCart()
+
   const handleTabChange = (category: string) => {
     if (productRefs?.current) {
       const selectedProductRef = productRefs.current[category]
@@ -25,8 +29,12 @@ export default function Navbar({
     }
   }
 
+  const handleGoBack = () => {
+    navigate('/')
+  }
+
   return (
-    <div className="navbar bg-secondary">
+    <div className="navbar bg-secondary fixed top-0 z-50">
       <div className="flex-1">
         {showGoBack && (
           <a
@@ -97,7 +105,7 @@ export default function Navbar({
         </ul>
       </div>
       <div className="navbar-end">
-        <label tabIndex={0} className="btn btn-ghost btn-circle">
+        <NavLink tabIndex={0} className="btn btn-ghost btn-circle" to={'/cart'}>
           <div className="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -113,9 +121,11 @@ export default function Navbar({
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-            <span className="badge badge-sm indicator-item">8</span>
+            <span className="badge badge-sm indicator-item">
+              {totalProducts}
+            </span>
           </div>
-        </label>
+        </NavLink>
       </div>
     </div>
   )

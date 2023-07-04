@@ -5,6 +5,9 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@contexts/*": [
+        "src/contexts/*"
+      ],
       "@interfaces/*": [
         "src/interfaces/*"
       ],

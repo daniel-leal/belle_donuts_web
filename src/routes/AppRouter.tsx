@@ -1,3 +1,4 @@
+import Cart from '@pages/Cart'
 import Home from '@pages/Home'
 import ProductDetails from '@pages/ProductDetails'
 import React from 'react'
@@ -9,6 +10,7 @@ const AppRouter: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="products/:id" element={<ProductDetails />} />
+        <Route path="cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   )

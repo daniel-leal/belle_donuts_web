@@ -45,7 +45,7 @@ const HeroAvailability: React.FC = () => {
 
   return (
     <>
-      <div className="hero min-w-screen" style={heroBackgroundStyle}>
+      <div className="hero min-w-screen mt-16" style={heroBackgroundStyle}>
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md m-10">

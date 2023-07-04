@@ -1,4 +1,5 @@
 import Navbar from '@components/Navbar'
+import useCart from '@hooks/useCart'
 import useScreenSize from '@hooks/useScreenSize'
 import { formatPrice } from '@utils/utils'
 import { useEffect, useState } from 'react'
@@ -7,18 +8,15 @@ import { useLocation, useNavigate } from 'react-router-dom'
 const ProductDetails = () => {
   const screenSize = useScreenSize()
   const location = useLocation()
-  const navigate = useNavigate()
   const product = location.state?.product
+  const navigate = useNavigate()
   const [quantity, setQuantity] = useState(1)
   const [total, setTotal] = useState('')
+  const { addToCart } = useCart()
 
   useEffect(() => {
     setTotal(formatPrice(product.price))
   }, [])
-
-  const handleGoBack = () => {
-    navigate(-1)
-  }
 
   const handleAddQuantity = () => {
     if (quantity < 99) {
@@ -41,17 +39,22 @@ const ProductDetails = () => {
     }
   }
 
+  const handleAddToCart = () => {
+    addToCart(product, quantity)
+    navigate('/cart')
+  }
+
   const MobileView = () => (
     <>
-      <Navbar showGoBack={true} handleGoBack={handleGoBack} />
-      <div className="container mx-auto">
-        <div className="flex mx-5 justify-center items-center flex-col">
+      <Navbar showGoBack />
+      <div className="container mx-auto px-4">
+        <div className="flex mx-5 justify-center items-center flex-col mt-16">
           <img
             src={product.image_url}
             alt={product.name}
             className="object-cover rounded-md h-60 w-60 mt-4"
           />
-          <h2 className="text-5xl p-5 text-secondary-focus font-bold">
+          <h2 className="text-5xl p-5 text-secondary-focus font-bold text-center">
             {product.name}
           </h2>
           <p className="text-gray-500 text-justify mt-2">
@@ -83,7 +86,10 @@ const ProductDetails = () => {
         <div className="text-gray-700">
           <span className="font-bold text-green-600">{total}</span>
         </div>
-        <button className="bg-secondary text-white px-4 py-2 rounded-md">
+        <button
+          className="btn btn-secondary rounded-md"
+          onClick={handleAddToCart}
+        >
           Adicionar
         </button>
       </footer>
@@ -96,8 +102,8 @@ const ProductDetails = () => {
         <MobileView />
       ) : (
         <>
-          <Navbar showGoBack={true} handleGoBack={handleGoBack} />
-          <div className="mx-auto container mt-11 shadow-2xl bg-white rounder-lg flex flex-row p-4 gap-4 w-full">
+          <Navbar showGoBack />
+          <div className="mx-auto container mt-24 shadow-2xl bg-white rounder-lg flex flex-row p-4 gap-4 w-full">
             <img
               src={product.image_url}
               alt={product.name}
@@ -133,7 +139,10 @@ const ProductDetails = () => {
                 <div className="text-gray-700">
                   <span className="font-bold text-green-600">{total}</span>
                 </div>
-                <button className="bg-secondary text-white px-4 py-2 rounded-md">
+                <button
+                  className="btn btn-secondary text-white rounded-md"
+                  onClick={handleAddToCart}
+                >
                   Adicionar
                 </button>
               </div>
